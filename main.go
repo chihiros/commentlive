@@ -42,11 +42,12 @@ func main() {
 	monitorSize := getMonitorSize()
 	// Create application with options
 	err := wails.Run(&options.App{
+		Title:         "commentlive",
 		Width:         monitorSize[0].Width,
 		Height:        monitorSize[0].Height,
 		DisableResize: true,
 		AlwaysOnTop:   true,
-		Frameless: true,
+		Frameless:     true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
