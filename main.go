@@ -44,6 +44,7 @@ func main() {
 	err := wails.Run(&options.App{
 		Width:         monitorSize[0].Width,
 		Height:        monitorSize[0].Height,
+		DisableResize: true,
 		Frameless: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
