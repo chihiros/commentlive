@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 
+	"github.com/go-gl/glfw/v3.2/glfw"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
