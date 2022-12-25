@@ -39,11 +39,11 @@ func main() {
 	// Create an instance of the app structure
 	app := NewApp()
 
+	monitorSize := getMonitorSize()
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:     "commentlive",
-		Width:     1024,
-		Height:    768,
+		Width:         monitorSize[0].Width,
+		Height:        monitorSize[0].Height,
 		Frameless: true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
