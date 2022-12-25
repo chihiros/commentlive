@@ -11,6 +11,29 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+type MonitorSize struct {
+	Width  int
+	Height int
+}
+
+func getMonitorSize() []MonitorSize {
+	if err := glfw.Init(); err != nil {
+		panic(err)
+	}
+	defer glfw.Terminate()
+
+	ms := []MonitorSize{}
+	// システム上のすべてのモニタを取得する
+	monitors := glfw.GetMonitors()
+	for _, monitor := range monitors {
+		// モニタのサイズを取得する
+		mode := monitor.GetVideoMode()
+		ms = append(ms, MonitorSize{Width: int(mode.Width), Height: int(mode.Height)})
+	}
+
+	return ms
+}
+
 func main() {
 	// Create an instance of the app structure
 	app := NewApp()
