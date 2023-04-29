@@ -36,10 +36,12 @@
     "updater": {
       "active": false
     },
+    "macOSPrivateApi": true,
     "windows": [
       {
         "fullscreen": false,
         "resizable": true,
+        "transparent": true,
         "title": "commentlive",
         "width": 800,
         "height": 600
