@@ -68,17 +68,11 @@ app.whenReady().then(() => {
     },
     type: 'input',
     //resizable: true,
-    customStylesheet: path.join(__dirname, '/css/prompt.css')
+    // customStylesheet: path.join(__dirname, '/css/prompt.css')
   }).then((r) => {
-    // win.setAlwaysOnTop(true, 'floating');
-    // win.setVisibleOnAllWorkspaces(true, {
-    //   visibleOnFullScreen: true
-    // });
-    // win.setFullScreenable(false);
     win.setAlwaysOnTop(true, "screen-saver")
     win.setIgnoreMouseEvents(true);
     win.loadFile('index.html')
-    //win.webContents.openDevTools();
 
     let room = "";
     if (r === null) {
@@ -122,7 +116,6 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "none", "${g_room}");`, true)
-                // .then(result => { })
                 .catch(console.error);
             }
           },
@@ -131,7 +124,6 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "center", "${g_room}");`, true)
-                // .then(result => { })
                 .catch(console.error);
             }
           },
@@ -140,7 +132,6 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "top_right", "${g_room}");`, true)
-                // .then(result => { })
                 .catch(console.error);
             }
           },
@@ -151,7 +142,6 @@ app.whenReady().then(() => {
         label: '投稿制限解除', type: 'checkbox',
         click(item, focusedWindow) {
           win.webContents.executeJavaScript(`toggleCommentControl(${item.checked});`, true)
-            // .then(result => { })
             .catch(console.error);
         }
       },
@@ -160,7 +150,6 @@ app.whenReady().then(() => {
         label: 'Mute sound', type: 'checkbox',
         click(item, focusedWindow) {
           win.webContents.executeJavaScript(`toggleSoundMute();`, true)
-            // .then(result => { })
             .catch(console.error);
         }
       },
@@ -171,11 +160,6 @@ app.whenReady().then(() => {
     ])
 
     const screens = screen.getAllDisplays();
-
-    // const data_append: Electron.MenuItemConstructorOptions = {
-    //   label: '表示ディスプレイ選択',
-    //   submenu: []
-    // };
 
     let data_append: Electron.MenuItemConstructorOptions;
     data_append.label = '表示ディスプレイ選択';
@@ -197,24 +181,7 @@ app.whenReady().then(() => {
         }
       });
     }
-
     data_append.submenu = submenu;
-
-    // data_append.submenu[sc_count] = {
-    //   label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
-    //   type: 'radio',
-    //   x: sc.workArea.x,
-    //   y: sc.workArea.y,
-    //   w: sc.workArea.width,
-    //   h: sc.workArea.height,
-    //   click: function (item: any, focusedWindow: any) {
-    //     console.log(item);
-    //     win.setPosition(item.x, item.y, true);
-    //     win.setSize(item.w, item.h, true);
-    //     console.log(item.x, item.y, item.w, item.h);
-    //   }
-    // };
-    // sc_count++;
     contextMenu.insert(3, new MenuItem(data_append));
 
     tray.setToolTip('commentable-viewer')
