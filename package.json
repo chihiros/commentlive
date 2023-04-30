@@ -20,6 +20,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "@types/electron-prompt": "^1.6.1",
     "@types/ws": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
@@ -28,6 +29,7 @@
     "typescript": "^4.8.3"
   },
   "dependencies": {
+    "electron-prompt": "^1.7.0",
     "ws": "^8.13.0"
   }
 }
