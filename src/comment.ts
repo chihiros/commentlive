@@ -1,4 +1,5 @@
 import * as p5 from "p5";
+import { screen } from "electron";
 
 export class Comment {
   private x: number;
@@ -13,6 +14,7 @@ export class Comment {
   private id_img: number;
   private color_text: string;
   private color_text_stroke: string;
+  private width: number;
 
   constructor() {
     this.x = Math.round(Math.random() * 100);
@@ -24,6 +26,7 @@ export class Comment {
     this.text_width = 0;
     this.flg_img = false;
     this.flg_emoji = false;
+    this.width = screen.getPrimaryDisplay().workAreaSize.width;
   }
 
   setAlpha(_alpha: number): void {
@@ -110,7 +113,7 @@ export class Comment {
       } else {
         // テキストの場合の移動
         this.life--;
-        const dx = (width + this.text_width) / _FRAME;
+        const dx = (this.width + this.text_width) / _FRAME;
         this.x = this.x - dx;
 
         if (this.life == 0) {
