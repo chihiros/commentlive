@@ -1,6 +1,5 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, screen } from "electron";
 import * as path from "path";
-import { screen } from "electron";
 
 function createWindow() {
   // Windowのサイズを取得する
