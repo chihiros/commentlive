@@ -1,16 +1,18 @@
-import { app, BrowserWindow, screen, Menu } from "electron";
+import { app, BrowserWindow, screen, Menu, MenuItem, shell, Tray, clipboard } from "electron";
+import * as prompt from 'electron-prompt';
 import * as path from "path";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
 const is_linux = process.platform === 'linux'
+let win: BrowserWindow;
 
 function createWindow() {
   // Windowのサイズを取得する
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   console.log(width, height);
 
-  const mainWindow = new BrowserWindow({
+  win = new BrowserWindow({
     title: "CommentLive",
     // width: width,
     // height: height,
@@ -19,7 +21,7 @@ function createWindow() {
     transparent: true,
   });
 
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  win.loadFile(path.join(__dirname, "../index.html"));
 }
 
 function capFirst(string: string) {
@@ -37,8 +39,6 @@ function generateName() {
   return name;
 }
 
-let tray = null
-let g_room;
 app.whenReady().then(() => {
   createWindow()
   const menu = Menu.buildFromTemplate(
@@ -50,8 +50,9 @@ app.whenReady().then(() => {
     }]);
   Menu.setApplicationMenu(menu);
 
+  let g_room = "";
   prompt({
-    title: 'Commentable',
+    title: 'CommentLive',
     alwaysOnTop: true,
     label: '部屋名を入力して入室してください',
     value: generateName(),
@@ -63,7 +64,7 @@ app.whenReady().then(() => {
     },
     inputAttrs: {
       type: 'text',
-      required: true
+      // required: true
     },
     type: 'input',
     //resizable: true,
@@ -89,6 +90,7 @@ app.whenReady().then(() => {
       room = r;
     }
     g_room = room;
+    let tray: Tray;
     if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
     else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
@@ -96,10 +98,9 @@ app.whenReady().then(() => {
     const hostname = "http://localhost:8080";
     // const hostname = proccess.env.HOSTNAME;
 
-    let contextMenu = Menu.buildFromTemplate([
+    const contextMenu = Menu.buildFromTemplate([
       {
         label: "投稿ページを開く", click: async () => {
-          const { shell } = require('electron')
           await shell.openExternal(hostname + '/?room=' + g_room);
         }
       },
@@ -169,31 +170,51 @@ app.whenReady().then(() => {
       { label: 'Quit Commentable-Viewer', role: 'quit' },
     ])
 
-    let screens = screen.getAllDisplays();
+    const screens = screen.getAllDisplays();
 
-    let data_append;
-    data_append = {
-      label: '表示ディスプレイ選択',
-      submenu: []
-    }
-    sc_count = 0;
-    for (sc of screens) {
-      data_append.submenu[sc_count] = {
+    // const data_append: Electron.MenuItemConstructorOptions = {
+    //   label: '表示ディスプレイ選択',
+    //   submenu: []
+    // };
+
+    let data_append: Electron.MenuItemConstructorOptions;
+    data_append.label = '表示ディスプレイ選択';
+
+    const submenu: Electron.MenuItemConstructorOptions[] = [];
+    for (const sc of screens) {
+      submenu.push({
         label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
         type: 'radio',
-        x: sc.workArea.x,
-        y: sc.workArea.y,
-        w: sc.workArea.width,
-        h: sc.workArea.height,
-        click: function (item) {
+        // x: sc.workArea.x,
+        // y: sc.workArea.y,
+        // w: sc.workArea.width,
+        // h: sc.workArea.height,
+        click: function (item: any, focusedWindow: any) {
           console.log(item);
           win.setPosition(item.x, item.y, true);
           win.setSize(item.w, item.h, true);
           console.log(item.x, item.y, item.w, item.h);
         }
-      };
-      sc_count++;
+      });
     }
+
+    data_append.submenu = submenu;
+
+    // data_append.submenu[sc_count] = {
+    //   label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
+    //   type: 'radio',
+    //   x: sc.workArea.x,
+    //   y: sc.workArea.y,
+    //   w: sc.workArea.width,
+    //   h: sc.workArea.height,
+    //   click: function (item: any, focusedWindow: any) {
+    //     console.log(item);
+    //     win.setPosition(item.x, item.y, true);
+    //     win.setSize(item.w, item.h, true);
+    //     console.log(item.x, item.y, item.w, item.h);
+    //   }
+    // };
+    // sc_count++;
     contextMenu.insert(3, new MenuItem(data_append));
 
     tray.setToolTip('commentable-viewer')
@@ -220,9 +241,7 @@ app.whenReady().then(() => {
   });
 
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      //createWindow()
-    }
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
   })
 })
 
@@ -231,18 +250,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-
-// app.whenReady().then(() => {
-//   createWindow();
-
-//   app.on("activate", function () {
-//     if (BrowserWindow.getAllWindows().length === 0) createWindow();
-//   });
-// });
-
-// app.on("window-all-closed", () => {
-//   if (process.platform !== "darwin") {
-//     app.quit();
-//   }
-// });
