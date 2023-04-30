@@ -173,7 +173,7 @@ app.whenReady().then(() => {
         // y: sc.workArea.y,
         // w: sc.workArea.width,
         // h: sc.workArea.height,
-        click: function (item: any, focusedWindow: any) {
+        click: function (item: any) {
           console.log(item);
           win.setPosition(item.x, item.y, true);
           win.setSize(item.w, item.h, true);
