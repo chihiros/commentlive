@@ -150,7 +150,7 @@ app.whenReady().then(() => {
         label: '投稿制限解除', type: 'checkbox',
         click(item, focusedWindow) {
           win.webContents.executeJavaScript(`toggleCommentControl(${item.checked});`, true)
-            .then(result => { })
+            // .then(result => { })
             .catch(console.error);
         }
       },
@@ -159,7 +159,7 @@ app.whenReady().then(() => {
         label: 'Mute sound', type: 'checkbox',
         click(item, focusedWindow) {
           win.webContents.executeJavaScript(`toggleSoundMute();`, true)
-            .then(result => { })
+            // .then(result => { })
             .catch(console.error);
         }
       },
@@ -214,7 +214,7 @@ app.whenReady().then(() => {
     win.show();
     // QRコードの表示
     win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${g_room}");`, true)
-      .then(result => { })
+      // .then(result => { })
       .catch(console.error);
 
   });
