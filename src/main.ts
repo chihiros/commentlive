@@ -121,7 +121,7 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "none", "${g_room}");`, true)
-                .then(result => { })
+                // .then(result => { })
                 .catch(console.error);
             }
           },
@@ -130,7 +130,7 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "center", "${g_room}");`, true)
-                .then(result => { })
+                // .then(result => { })
                 .catch(console.error);
             }
           },
@@ -139,7 +139,7 @@ app.whenReady().then(() => {
             click(item, focusedWindow) {
               console.log(item, focusedWindow);
               win.webContents.executeJavaScript(`toggleQR(${item.checked}, "top_right", "${g_room}");`, true)
-                .then(result => { })
+                // .then(result => { })
                 .catch(console.error);
             }
           },
