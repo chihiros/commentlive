@@ -1,11 +1,18 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
+import { screen } from "electron";
 
 function createWindow() {
+  // Windowのサイズを取得する
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  console.log(width, height);
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
+    // width: 800,
+    // height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
