@@ -1,3 +1,5 @@
+import * as p5 from "p5";
+
 export class Comment {
   private x: number;
   private y: number;
@@ -119,15 +121,15 @@ export class Comment {
     return;
   }
 
-  // draw() {
-  //   if (this.flg_img == false) {
-  //     stroke(this.color_text_stroke);
-  //     strokeWeight(5); // 縁取りは5px
-  //     fill(this.color_text);
-  //     text(this.text, this.x, this.y);
-  //   }
-  //   return;
-  // }
+  draw(): void {
+    if (this.flg_img == false) {
+      p5.stroke(this.color_text_stroke);
+      p5.strokeWeight(5); // 縁取りは5px
+      p5.fill(this.color_text);
+      p5.text(this.text, this.x, this.y);
+    }
+    return;
+  }
 
   reset(): void {
     this.x = Math.round(Math.random() * 100);
