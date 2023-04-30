@@ -4,7 +4,7 @@ import * as path from "path";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
-const is_linux = process.platform === 'linux'
+// const is_linux = process.platform === 'linux'
 let win: BrowserWindow;
 
 function createWindow() {
@@ -100,7 +100,7 @@ app.whenReady().then(() => {
       },
       {
         label: '投稿ページURLをコピー',
-        click(item, focusedWindows) {
+        click() {
           clipboard.writeText(hostname + '/?room=' + g_room);
           console.log(hostname + '/?room=' + encodeURI(g_room));
         }
@@ -140,7 +140,7 @@ app.whenReady().then(() => {
 
       {
         label: '投稿制限解除', type: 'checkbox',
-        click(item, focusedWindow) {
+        click(item) {
           win.webContents.executeJavaScript(`toggleCommentControl(${item.checked});`, true)
             .catch(console.error);
         }
@@ -148,7 +148,7 @@ app.whenReady().then(() => {
 
       {
         label: 'Mute sound', type: 'checkbox',
-        click(item, focusedWindow) {
+        click() {
           win.webContents.executeJavaScript(`toggleSoundMute();`, true)
             .catch(console.error);
         }
