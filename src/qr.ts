@@ -1,4 +1,5 @@
 import { screen } from "electron";
+import QRCodeStyling from "qr-code-styling";
 
 // QRコードを生成する関数
 function toggleQR(checked: boolean, position: string, room: string) {
