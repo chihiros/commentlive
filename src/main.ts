@@ -21,21 +21,6 @@ function createWindow() {
   win.loadFile(path.join(__dirname, "../index.html"));
 }
 
-function capFirst(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function getRandomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function generateName() {
-  const name1 = ["computer", "design", "art", "human", "410", "interface", "tmu"];
-  const name2 = ["room", "class", "conference", "event", "area", "place"];
-  const name = capFirst(name1[getRandomInt(0, name1.length)]) + '_' + capFirst(name2[getRandomInt(0, name2.length)]);
-  return name;
-}
-
 app.whenReady().then(() => {
   createWindow()
   const menu = Menu.buildFromTemplate(

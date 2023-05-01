@@ -14,6 +14,21 @@ export function downloadAllComments(): void {
   a.click();
 }
 
-export function getRandom(min: number, max: number): number {
+function getRandom(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function capFirst(string: string): string {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function getRandomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+export function generateName(): string {
+  const name1 = ["computer", "design", "art", "human", "410", "interface", "tmu"];
+  const name2 = ["room", "class", "conference", "event", "area", "place"];
+  const name = capFirst(name1[getRandomInt(0, name1.length)]) + '_' + capFirst(name2[getRandomInt(0, name2.length)]);
+  return name;
 }
