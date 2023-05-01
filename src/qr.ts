@@ -26,6 +26,8 @@ function toggleQR(checked: boolean, position: string, room: string) {
     qr_width = qr_height = windowWidth / 10;
     qr_font_size = windowWidth / 150;
   }
+
+  const hostname = window.location.hostname; // 一時的に追加
   const qrCode = new QRCodeStyling({
     "width": qr_width,
     "height": qr_height,
