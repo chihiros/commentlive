@@ -1,9 +1,14 @@
+import { screen } from "electron";
+
 // QRコードを生成する関数
 function toggleQR(checked: boolean, position: string, room: string) {
   let qr_width;
   let qr_height;
   let qr_font_size;
-  console.log(windowWidth, windowHeight);
+
+  const windowWidth = screen.getPrimaryDisplay().workAreaSize.width;
+  const windowHeight = screen.getPrimaryDisplay().workAreaSize.height;
+  // console.log(windowWidth, windowHeight);
 
   if (position == "none") {
     document.getElementById("QR_center").innerHTML = "";
