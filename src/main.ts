@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, shell, Tray, clipboard } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
+import { HOSTNAME } from "./constants";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
@@ -88,21 +89,17 @@ app.whenReady().then(() => {
     if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
     else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
-    // const hostname = "https://commentable.fly.dev";
-    const hostname = "http://localhost:8080";
-    // const hostname = proccess.env.HOSTNAME;
-
     const contextMenu = Menu.buildFromTemplate([
       {
         label: "投稿ページを開く", click: async () => {
-          await shell.openExternal(hostname + '/?room=' + g_room);
+          await shell.openExternal(HOSTNAME + '/?room=' + g_room);
         }
       },
       {
         label: '投稿ページURLをコピー',
         click() {
-          clipboard.writeText(hostname + '/?room=' + g_room);
-          console.log(hostname + '/?room=' + encodeURI(g_room));
+          clipboard.writeText(HOSTNAME + '/?room=' + g_room);
+          console.log(HOSTNAME + '/?room=' + encodeURI(g_room));
         }
       },
       {
