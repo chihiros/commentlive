@@ -38,24 +38,24 @@ function toggleQR(checked: boolean, position: string, room: string) {
     "dotsOptions": { "type": "dots", "color": "#333333" },
     "backgroundOptions": { "color": "#ffffff" },
     "image": './images/commentable_logo_text.png',
-    "dotsOptionsHelper": {
-      "colorType": { "single": true, "gradient": false },
-      "gradient": { "linear": true, "radial": false, "color1": "#6a1a4c", "color2": "#6a1a4c", "rotation": "0" }
-    },
+    // "dotsOptionsHelper": {
+    //   "colorType": { "single": true, "gradient": false },
+    //   "gradient": { "linear": true, "radial": false, "color1": "#6a1a4c", "color2": "#6a1a4c", "rotation": "0" }
+    // },
     "cornersSquareOptions": { "type": "dot", "color": "#333333" },
-    "cornersSquareOptionsHelper": {
-      "colorType": { "single": true, "gradient": false },
-      "gradient": { "linear": true, "radial": false, "color1": "#333333", "color2": "#333333", "rotation": "0" }
-    },
+    // "cornersSquareOptionsHelper": {
+    //   "colorType": { "single": true, "gradient": false },
+    //   "gradient": { "linear": true, "radial": false, "color1": "#333333", "color2": "#333333", "rotation": "0" }
+    // },
     "cornersDotOptions": { "type": "dot", "color": "#333333" },
-    "cornersDotOptionsHelper": {
-      "colorType": { "single": true, "gradient": false },
-      "gradient": { "linear": true, "radial": false, "color1": "#333333", "color2": "#333333", "rotation": "0" }
-    },
-    "backgroundOptionsHelper": {
-      "colorType": { "single": true, "gradient": false },
-      "gradient": { "linear": true, "radial": false, "color1": "#ffffff", "color2": "#ffffff", "rotation": "0" }
-    }
+    // "cornersDotOptionsHelper": {
+    //   "colorType": { "single": true, "gradient": false },
+    //   "gradient": { "linear": true, "radial": false, "color1": "#333333", "color2": "#333333", "rotation": "0" }
+    // },
+    // "backgroundOptionsHelper": {
+    //   "colorType": { "single": true, "gradient": false },
+    //   "gradient": { "linear": true, "radial": false, "color1": "#ffffff", "color2": "#ffffff", "rotation": "0" }
+    // }
   });
 
   if (checked && position == "center") {
