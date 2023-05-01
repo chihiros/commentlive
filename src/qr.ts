@@ -1,5 +1,5 @@
 // QRコードを生成する関数
-function toggleQR(checked, position, room) {
+function toggleQR(checked: boolean, position: string, room: string) {
   let qr_width;
   let qr_height;
   let qr_font_size;
