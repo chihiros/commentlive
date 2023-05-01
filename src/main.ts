@@ -23,13 +23,14 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow()
-  const menu = Menu.buildFromTemplate(
-    [{
+  const menu = Menu.buildFromTemplate([
+    {
       label: app.name,
       submenu: [
         { role: 'quit', label: `${app.name} を終了` }
       ]
-    }]);
+    }
+  ]);
   Menu.setApplicationMenu(menu);
 
   let g_room = "";
