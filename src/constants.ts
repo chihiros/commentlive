@@ -6,5 +6,5 @@ export { HOSTNAME };
 
 // 画面サイズをAPIから取得
 const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-const { WIDTH, HEIGHT } = { WIDTH: width, HEIGHT: height };
-export { WIDTH, HEIGHT };
+const { SCREEN_WIDTH, SCREEN_HEIGHT } = { SCREEN_WIDTH: width, SCREEN_HEIGHT: height };
+export { SCREEN_WIDTH, SCREEN_HEIGHT };
