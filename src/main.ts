@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, shell, Tray, clipboard } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-import { HOSTNAME } from "./constants";
+import { HOSTNAME, SCREEN_WIDTH, SCREEN_HEIGHT } from "./constants";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
@@ -9,14 +9,10 @@ const is_mac = process.platform === 'darwin'
 let win: BrowserWindow;
 
 function createWindow() {
-  // Windowのサイズを取得する
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-  console.log(width, height);
-
   win = new BrowserWindow({
     title: "CommentLive",
-    // width: width,
-    // height: height,
+    // width: SCREEN_WIDTH,
+    // height: SCREEN_HEIGHT,
     width: 800,
     height: 600,
     transparent: true,
