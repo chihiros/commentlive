@@ -13,3 +13,7 @@ export function downloadAllComments(): void {
   a.download = ('comments.txt');
   a.click();
 }
+
+export function getRandom(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
