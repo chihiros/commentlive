@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Electron Prompt</title>
+</head>
+
+<body>
+  <h1>Please enter your input:</h1>
+  <input id="input" type="text" autofocus />
+  <button id="submit">Submit</button>
+  <button id="cancel">Cancel</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById('submit').addEventListener('click', () => {
+      const input = document.getElementById('input').value;
+      ipcRenderer.send('prompt-input', input);
+    });
+
+    document.getElementById('cancel').addEventListener('click', () => {
+      ipcRenderer.send('prompt-input', null);
+    });
+  </script>
+</body>
+
+</html>
