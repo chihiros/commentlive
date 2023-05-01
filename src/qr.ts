@@ -33,7 +33,7 @@ function toggleQR(checked: boolean, position: string, room: string) {
     "height": qr_height,
     "data": hostname + "/?room=" + encodeURI(room),
     "margin": qr_width / 15,
-    "qrOptions": { "typeNumber": "0", "mode": "Byte", "errorCorrectionLevel": "Q" },
+    "qrOptions": { "typeNumber": 0, "mode": "Byte", "errorCorrectionLevel": "Q" },
     "imageOptions": { "hideBackgroundDots": true, "imageSize": 0.4, "margin": 0 },
     "dotsOptions": { "type": "dots", "color": "#333333" },
     "backgroundOptions": { "color": "#ffffff" },
