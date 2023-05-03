@@ -43,6 +43,8 @@ app.whenReady().then(() => {
       console.log("handlePrompt - then");
       console.log(e);
 
+      SetServerUrl(e.serverUrl);
+      SetRoomName(e.roomName);
     })
     .catch(console.error);
 
