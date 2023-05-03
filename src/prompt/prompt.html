@@ -18,8 +18,14 @@
     <input type="text" name="roomName" id="roomName" value=""
       class="border text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 border-gray-300 mb-3" />
 
-    <!-- Cancelボタン -->
-    <!-- Goボタン -->
+    <div className='grid gap-2 grid-cols-2'>
+      <!-- Cancelボタン -->
+      <button type="button"
+        class="text-sm px-5 py-2.5 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-center mr-2 mb-2">Dark</button>
+      <!-- Goボタン -->
+      <button type="button"
+        class="text-sm px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-center">Base</button>
+    </div>
   </div>
   <script>
     const { ipcRenderer } = require('electron');
