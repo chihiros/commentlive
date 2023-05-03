@@ -2,6 +2,7 @@ import { screen } from "electron";
 
 // WebSocketサーバのホスト名を定義
 const HOSTNAME = "http://localhost:8080";
+// const HOSTNAME = proccess.env.HOSTNAME;
 export { HOSTNAME };
 
 /**
