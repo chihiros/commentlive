@@ -19,7 +19,26 @@
     "typescript"
   ],
   "author": "GitHub",
-  "license": "CC0-1.0",
+  "license": "",
+  "main": "dist/main.js",
+  "build": {
+    "appId": "your.app.id",
+    "productName": "Your App Name",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "default"
+    },
+    "asarUnpack": [
+      "**/*.node",
+      "**/node_modules/**"
+    ]
+  },
   "devDependencies": {
     "@types/electron-prompt": "^1.6.1",
     "@types/p5": "^1.6.1",
