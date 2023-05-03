@@ -28,8 +28,3 @@ export function createPrompt(): Promise<string | null> {
     });
   });
 }
-
-async function handlePrompt() {
-  const userInput = await createPrompt();
-  console.log('User input:', userInput);
-}
