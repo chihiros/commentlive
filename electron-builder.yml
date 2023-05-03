@@ -1,0 +1,3 @@
+asarUnpack:
+  - "**/*.node"
+  - "**/node_modules/**"
