@@ -32,13 +32,9 @@
       "dist/**/*"
     ],
     "mac": {
-      "category": "public.app-category.utilities",
-      "target": "default"
-    },
-    "asarUnpack": [
-      "**/*.node",
-      "**/node_modules/**"
-    ]
+      "target": "dmg",
+      "arch": "universal"
+    }
   },
   "devDependencies": {
     "@types/electron-prompt": "^1.6.1",
