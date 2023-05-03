@@ -1,7 +1,9 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, shell, Tray, clipboard } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-import { HOSTNAME, SCREEN_WIDTH, SCREEN_HEIGHT } from "./constants";
+// import { HOSTNAME, SCREEN_WIDTH, SCREEN_HEIGHT } from "./constants";
+import { contextMenu } from "./menu";
+import { createPrompt } from "./prompt";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
@@ -33,81 +35,89 @@ app.whenReady().then(() => {
   ]);
   Menu.setApplicationMenu(menu);
 
-  let g_room = "";
-  prompt({
-    title: 'CommentLive',
-    alwaysOnTop: true,
-    label: '部屋名を入力して入室してください',
-    value: generateName(),
-    // value: "test_room",
-    //menuBarVisible: true,
-    buttonLabels: {
-      ok: '入室',
-      cancel: 'やめる'
-    },
-    inputAttrs: {
-      type: 'text',
-      // required: true
-    },
-    type: 'input',
-    //resizable: true,
-    // customStylesheet: path.join(__dirname, '/css/prompt.css')
-  }).then((r) => {
+  createPrompt().then((r) => {
     win.setAlwaysOnTop(true, "screen-saver")
     win.setIgnoreMouseEvents(true);
     win.loadFile('index.html')
+  });
 
-    let room = "";
-    if (r === null) {
-      console.log('user cancelled');
-      room = "";
-      app.quit();
-    } else {
-      console.log('result', r);
-      room = r;
-    }
-    g_room = room;
-    let tray: Tray;
-    if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
-    else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
-    const screens = screen.getAllDisplays();
+  const g_room = "";
+  // prompt({
+  //   title: 'CommentLive',
+  //   // alwaysOnTop: true,
+  //   label: '部屋名を入力して入室してください',
+  //   // value: generateName(),
+  //   value: "test_room",
+  //   //menuBarVisible: true,
+  //   buttonLabels: {
+  //     ok: '入室',
+  //     cancel: 'やめる'
+  //   },
+  //   inputAttrs: {
+  //     type: 'text',
+  //     // required: true
+  //   },
+  //   type: 'input',
+  //   //resizable: true,
+  //   // customStylesheet: path.join(__dirname, '/css/prompt.css')
+  // }).then((r) => {
+  //   win.setAlwaysOnTop(true, "screen-saver")
+  //   win.setIgnoreMouseEvents(true);
+  //   win.loadFile('index.html')
 
-    let data_append: Electron.MenuItemConstructorOptions;
-    data_append.label = '表示ディスプレイ選択';
+  //   let room = "";
+  //   if (r === null) {
+  //     console.log('user cancelled');
+  //     room = "";
+  //     app.quit();
+  //   } else {
+  //     console.log('result', r);
+  //     room = r;
+  //   }
+  //   g_room = room;
+  //   let tray: Tray;
+  //   if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
+  //   else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
-    const submenu: Electron.MenuItemConstructorOptions[] = [];
-    for (const sc of screens) {
-      submenu.push({
-        label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
-        type: 'radio',
-        // x: sc.workArea.x,
-        // y: sc.workArea.y,
-        // w: sc.workArea.width,
-        // h: sc.workArea.height,
-        click: function (item: any) {
-          console.log(item);
-          win.setPosition(item.x, item.y, true);
-          win.setSize(item.w, item.h, true);
-          console.log(item.x, item.y, item.w, item.h);
-        }
-      });
-    }
-    data_append.submenu = submenu;
-    contextMenu.insert(3, new MenuItem(data_append));
+  //   const screens = screen.getAllDisplays();
 
-    tray.setToolTip('commentable-viewer')
+  //   let data_append: Electron.MenuItemConstructorOptions;
+  //   data_append.label = '表示ディスプレイ選択';
 
-    tray.setContextMenu(contextMenu)
-    //クリック時の操作を設定
-    tray.on('click', () => {
-      // メニューを表示
-      tray.popUpContextMenu(contextMenu)
-    })
+  //   const submenu: Electron.MenuItemConstructorOptions[] = [];
+  //   for (const sc of screens) {
+  //     submenu.push({
+  //       label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
+  //       type: 'radio',
+  //       // x: sc.workArea.x,
+  //       // y: sc.workArea.y,
+  //       // w: sc.workArea.width,
+  //       // h: sc.workArea.height,
+  //       click: function (item: any) {
+  //         console.log(item);
+  //         win.setPosition(item.x, item.y, true);
+  //         win.setSize(item.w, item.h, true);
+  //         console.log(item.x, item.y, item.w, item.h);
+  //       }
+  //     });
+  //   }
+  //   data_append.submenu = submenu;
+  //   const cMenu = contextMenu();
+  //   cMenu.insert(3, new MenuItem(data_append));
 
-    win.webContents.executeJavaScript(`startSocketConnection("${room}");`, true)
-      .catch(console.error);
-  }).catch(console.error);
+  //   tray.setToolTip('commentable-viewer')
+
+  //   tray.setContextMenu(cMenu)
+  //   //クリック時の操作を設定
+  //   tray.on('click', () => {
+  //     // メニューを表示
+  //     tray.popUpContextMenu(cMenu)
+  //   })
+
+  //   win.webContents.executeJavaScript(`startSocketConnection("${room}");`, true)
+  //     .catch(console.error);
+  // }).catch(console.error);
 
 
   win.webContents.on('did-finish-load', () => {
