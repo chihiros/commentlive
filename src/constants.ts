@@ -12,3 +12,23 @@ export const GetScreenSize: () => { SCREEN_WIDTH: number, SCREEN_HEIGHT: number 
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   return { SCREEN_WIDTH: width, SCREEN_HEIGHT: height };
 }
+
+// serverUrlとroomNameの追加
+let SERVER_URL = "";
+let ROOM_NAME = "";
+
+export function SetServerUrl(_serverUrl: string): void {
+  SERVER_URL = _serverUrl;
+}
+
+export function GetServerUrl(): string {
+  return SERVER_URL;
+}
+
+export function SetRoomName(_roomName: string): void {
+  ROOM_NAME = _roomName;
+}
+
+export function GetRoomName(): string {
+  return ROOM_NAME;
+}
