@@ -31,7 +31,12 @@
     const { ipcRenderer } = require('electron');
 
     document.getElementById('go').addEventListener('click', () => {
-      const input = document.getElementById('input').value;
+      const serverUrl = document.getElementById('serverUrl').value;
+      const roomName = document.getElementById('roomName').value;
+      const input = {
+        serverUrl: serverUrl,
+        roomName: roomName
+      };
       ipcRenderer.send('prompt-input', input);
     });
 
