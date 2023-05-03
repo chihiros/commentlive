@@ -5,8 +5,8 @@ import * as child_process from 'child_process';
 export function createPrompt(): Promise<string | null> {
   return new Promise((resolve, reject) => {
     const promptWindow = new BrowserWindow({
-      width: 300,
-      height: 200,
+      width: 640,
+      height: 480,
       modal: true,
       parent: BrowserWindow.getFocusedWindow(),
       webPreferences: {
