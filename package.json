@@ -24,6 +24,7 @@
   "build": {
     "appId": "your.app.id",
     "productName": "Your App Name",
+    "asar": true,
     "directories": {
       "output": "dist"
     },
