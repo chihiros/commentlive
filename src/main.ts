@@ -25,8 +25,6 @@ function createWindow() {
     height: 600,
     transparent: true,
   });
-
-  win.loadFile(path.join(__dirname, "../index.html"));
 }
 
 app.whenReady().then(() => {
