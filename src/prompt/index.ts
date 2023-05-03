@@ -20,7 +20,7 @@ export function createPrompt(): Promise<PromptResponse | null> {
       },
     });
 
-    promptWindow.loadFile(path.join(__dirname, 'prompt.html'));
+    promptWindow.loadFile(path.join(__dirname, 'prompt/prompt.html'));
 
     ipcMain.once('prompt-input', (_, input: PromptResponse | null) => {
       resolve(input);
