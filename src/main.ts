@@ -36,7 +36,7 @@ app.whenReady().then(() => {
 
   console.log("handlePrompt");
   createPrompt()
-    .then((e) => {
+    .then((e: PromptResponse) => {
       // win.setAlwaysOnTop(true, "screen-saver")
       // win.setIgnoreMouseEvents(true);
       // win.loadFile('index.html')

@@ -1,7 +1,12 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
-export function createPrompt(): Promise<string | null> {
+export type PromptResponse = {
+  serverUrl: string;
+  roomName: string;
+}
+
+export function createPrompt(): Promise<PromptResponse | null> {
   return new Promise((resolve, reject) => {
     const promptWindow = new BrowserWindow({
       width: 512,
@@ -17,7 +22,7 @@ export function createPrompt(): Promise<string | null> {
 
     promptWindow.loadFile(path.join(__dirname, 'prompt.html'));
 
-    ipcMain.once('prompt-input', (_, input: string | null) => {
+    ipcMain.once('prompt-input', (_, input: PromptResponse | null) => {
       resolve(input);
       promptWindow.close();
     });
