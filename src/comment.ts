@@ -1,6 +1,22 @@
 import * as p5 from "p5";
 import { screen } from "electron";
 
+type CommentParams = {
+  x: number;
+  y: number;
+  text: string;
+  alpha: number;
+  life: number;
+  size: number;
+  text_width: number;
+  flg_img: boolean;
+  flg_emoji: boolean;
+  id_img: number;
+  color_text: string;
+  color_text_stroke: string;
+  width: number;
+};
+
 export class Comment {
   private x: number;
   private y: number;
