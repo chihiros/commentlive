@@ -14,11 +14,11 @@ export function downloadAllComments(): void {
   a.click();
 }
 
-function getRandom(min: number, max: number): number {
+export function getRandom(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function capFirst(string: string): string {
+export function capFirst(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
