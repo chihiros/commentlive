@@ -4,8 +4,8 @@ import * as path from 'path';
 export function createPrompt(): Promise<string | null> {
   return new Promise((resolve, reject) => {
     const promptWindow = new BrowserWindow({
-      width: 640,
-      height: 480,
+      width: 512,
+      height: 288,
       modal: true,
       parent: BrowserWindow.getFocusedWindow(),
       webPreferences: {
