@@ -1,6 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
-import * as child_process from 'child_process';
 
 export function createPrompt(): Promise<string | null> {
   return new Promise((resolve, reject) => {
