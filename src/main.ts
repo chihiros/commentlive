@@ -1,10 +1,10 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, Tray } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-import { GetScreenSize } from "./constants";
+import { GetScreenSize, SetServerUrl, SetRoomName } from "./constants";
 import { generateName } from "./utils";
 import { contextMenu } from "./menu";
-import { createPrompt } from "./prompt";
+import { createPrompt, PromptResponse } from "./prompt";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
