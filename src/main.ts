@@ -10,6 +10,11 @@ const is_mac = process.platform === 'darwin'
 // const is_linux = process.platform === 'linux'
 let win: BrowserWindow;
 
+async function handlePrompt() {
+  const userInput = await createPrompt();
+  console.log('User input:', userInput);
+}
+
 function createWindow() {
   win = new BrowserWindow({
     title: "CommentLive",
@@ -35,12 +40,17 @@ app.whenReady().then(() => {
   ]);
   Menu.setApplicationMenu(menu);
 
-  createPrompt().then((r) => {
-    win.setAlwaysOnTop(true, "screen-saver")
-    win.setIgnoreMouseEvents(true);
-    win.loadFile('index.html')
-  });
+  console.log("handlePrompt");
+  handlePrompt()
+    .then((e) => {
+      // win.setAlwaysOnTop(true, "screen-saver")
+      // win.setIgnoreMouseEvents(true);
+      // win.loadFile('index.html')
+      console.log("handlePrompt - then");
+      console.log(e);
 
+    })
+    .catch(console.error);
 
   const g_room = "";
   // prompt({
