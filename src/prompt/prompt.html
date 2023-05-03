@@ -30,7 +30,7 @@
   <script>
     const { ipcRenderer } = require('electron');
 
-    document.getElementById('submit').addEventListener('click', () => {
+    document.getElementById('go').addEventListener('click', () => {
       const input = document.getElementById('input').value;
       ipcRenderer.send('prompt-input', input);
     });
