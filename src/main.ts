@@ -35,7 +35,7 @@ app.whenReady().then(() => {
   Menu.setApplicationMenu(menu);
 
   console.log("handlePrompt");
-  handlePrompt()
+  createPrompt()
     .then((e) => {
       // win.setAlwaysOnTop(true, "screen-saver")
       // win.setIgnoreMouseEvents(true);
