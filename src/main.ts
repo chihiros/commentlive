@@ -1,7 +1,8 @@
-import { app, BrowserWindow, screen, Menu, MenuItem, shell, Tray, clipboard } from "electron";
+import { app, BrowserWindow, screen, Menu, MenuItem, Tray } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-// import { HOSTNAME, SCREEN_WIDTH, SCREEN_HEIGHT } from "./constants";
+import { GetScreenSize } from "./constants";
+import { generateName } from "./utils";
 import { contextMenu } from "./menu";
 import { createPrompt } from "./prompt";
 
