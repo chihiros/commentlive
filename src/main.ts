@@ -11,11 +11,6 @@ const is_mac = process.platform === 'darwin'
 // const is_linux = process.platform === 'linux'
 let win: BrowserWindow;
 
-async function handlePrompt() {
-  const userInput = await createPrompt();
-  console.log('User input:', userInput);
-}
-
 function createWindow() {
   win = new BrowserWindow({
     title: "CommentLive",
