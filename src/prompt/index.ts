@@ -7,6 +7,7 @@ export function createPrompt(): Promise<string | null> {
       width: 512,
       height: 288,
       modal: true,
+      resizable: false,
       parent: BrowserWindow.getFocusedWindow(),
       webPreferences: {
         nodeIntegration: true,
