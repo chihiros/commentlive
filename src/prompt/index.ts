@@ -11,7 +11,6 @@ export function createPrompt(): Promise<PromptResponse | null> {
     const promptWindow = new BrowserWindow({
       width: 512,
       height: 269,
-      modal: true,
       resizable: false,
       parent: BrowserWindow.getFocusedWindow(),
       webPreferences: {
