@@ -3,5 +3,5 @@ asarUnpack:
   - "**/node_modules/**"
 files:
   - "dist/**/*"
-  - "!**/*.map"
+  - "!**/{*.map,*.zip,*.blockmap,*.dmg,*.exe,*.msi,*.deb,*.snap,*.yml}"
   - "package.json"
