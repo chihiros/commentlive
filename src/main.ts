@@ -49,39 +49,6 @@ app.whenReady().then(() => {
     .catch(console.error);
 
   const g_room = "";
-  // prompt({
-  //   title: 'CommentLive',
-  //   // alwaysOnTop: true,
-  //   label: '部屋名を入力して入室してください',
-  //   // value: generateName(),
-  //   value: "test_room",
-  //   //menuBarVisible: true,
-  //   buttonLabels: {
-  //     ok: '入室',
-  //     cancel: 'やめる'
-  //   },
-  //   inputAttrs: {
-  //     type: 'text',
-  //     // required: true
-  //   },
-  //   type: 'input',
-  //   //resizable: true,
-  //   // customStylesheet: path.join(__dirname, '/css/prompt.css')
-  // }).then((r) => {
-  //   win.setAlwaysOnTop(true, "screen-saver")
-  //   win.setIgnoreMouseEvents(true);
-  //   win.loadFile('index.html')
-
-  //   let room = "";
-  //   if (r === null) {
-  //     console.log('user cancelled');
-  //     room = "";
-  //     app.quit();
-  //   } else {
-  //     console.log('result', r);
-  //     room = r;
-  //   }
-  //   g_room = room;
   //   let tray: Tray;
   //   if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
   //   else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
