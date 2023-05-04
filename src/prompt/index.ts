@@ -10,7 +10,7 @@ export function createPrompt(): Promise<PromptResponse | null> {
   return new Promise((resolve, reject) => {
     const promptWindow = new BrowserWindow({
       width: 512,
-      height: 288,
+      height: 269,
       modal: true,
       resizable: false,
       parent: BrowserWindow.getFocusedWindow(),
