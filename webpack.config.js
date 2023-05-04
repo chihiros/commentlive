@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = [
   {
+    mode: 'development',
     target: 'electron-main',
     entry: './src/main.ts',
     output: {
@@ -22,6 +23,7 @@ module.exports = [
     },
   },
   {
+    mode: 'development',
     target: 'electron-renderer',
     entry: './src/preload.ts',
     output: {
