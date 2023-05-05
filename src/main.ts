@@ -23,7 +23,6 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  createWindow()
   const menu = Menu.buildFromTemplate([
     {
       label: app.name,
@@ -42,15 +41,14 @@ app.whenReady().then(() => {
         app.quit();
         return;
       }
-
+      SetServerUrl(e.serverUrl);
+      SetRoomName(e.roomName);
+      createWindow();
       win.setAlwaysOnTop(true, "screen-saver")
       win.setIgnoreMouseEvents(true);
       win.loadFile('index.html')
       console.log("handlePrompt - then");
       console.log(e);
-
-      SetServerUrl(e.serverUrl);
-      SetRoomName(e.roomName);
     })
     .catch(console.error);
 
