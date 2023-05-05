@@ -43,6 +43,9 @@ app.whenReady().then(() => {
         return;
       }
 
+      win.setAlwaysOnTop(true, "screen-saver")
+      win.setIgnoreMouseEvents(true);
+      win.loadFile('index.html')
       console.log("handlePrompt - then");
       console.log(e);
 
