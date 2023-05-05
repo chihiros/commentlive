@@ -7,7 +7,7 @@
     "watch": "webpack --watch",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
     "start": "npm run build && electron ./dist/main.js",
-    "copy-html": "copyfiles -u 1 src/prompt/prompt.html dist/",
+    "copy-html": "cpy 'src/**/*.html' dist --parents",
     "build-dmg": "npm run build && electron-builder --mac --config=electron-builder.yml"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
