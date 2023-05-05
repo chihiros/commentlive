@@ -37,9 +37,12 @@ app.whenReady().then(() => {
   console.log("handlePrompt");
   createPrompt()
     .then((e: PromptResponse) => {
-      // win.setAlwaysOnTop(true, "screen-saver")
-      // win.setIgnoreMouseEvents(true);
-      // win.loadFile('index.html')
+      // キャンセルされた場合はアプリを終了する
+      if (!e) {
+        app.quit();
+        return;
+      }
+
       console.log("handlePrompt - then");
       console.log(e);
 
