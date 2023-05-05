@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, Tray } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-import { GetScreenSize, SetServerUrl, SetRoomName } from "./constants";
+import { GetScreenSize, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
 import { generateName } from "./utils";
 import { contextMenu } from "./menu";
 import { createPrompt, PromptResponse } from "./prompt";
@@ -99,7 +99,7 @@ app.whenReady().then(() => {
   win.webContents.on('did-finish-load', () => {
     win.show();
     // QRコードの表示
-    win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${g_room}");`, true)
+    win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${GetRoomName()}");`, true)
       // .then(result => { })
       .catch(console.error);
 
