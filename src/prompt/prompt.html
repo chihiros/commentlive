@@ -48,6 +48,28 @@
     document.getElementById('cancel').addEventListener('click', () => {
       ipcRenderer.send('prompt-input', null);
     });
+
+    function goButtonClick() {
+      const serverUrl = document.getElementById('serverUrl').value;
+      const roomName = document.getElementById('roomName').value;
+      const input = {
+        serverUrl: serverUrl,
+        roomName: roomName
+      };
+      ipcRenderer.send('prompt-input', input);
+    }
+
+    document.getElementById('go').addEventListener('click', goButtonClick);
+
+    document.getElementById('cancel').addEventListener('click', () => {
+      ipcRenderer.send('prompt-input', null);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        goButtonClick();
+      }
+    });
   </script>
 </body>
 
