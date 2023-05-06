@@ -51,29 +51,29 @@ app.whenReady().then(() => {
       console.log("handlePrompt - then");
       console.log(e);
 
-      // const screens = screen.getAllDisplays();
+      const screens = screen.getAllDisplays();
 
-      // let data_append: Electron.MenuItemConstructorOptions;
-      // data_append.label = '表示ディスプレイ選択';
+      let data_append: Electron.MenuItemConstructorOptions;
+      data_append.label = '表示ディスプレイ選択';
 
-      // const submenu: Electron.MenuItemConstructorOptions[] = [];
-      // for (const sc of screens) {
-      //   submenu.push({
-      //     label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
-      //     type: 'radio',
-      //     // x: sc.workArea.x,
-      //     // y: sc.workArea.y,
-      //     // w: sc.workArea.width,
-      //     // h: sc.workArea.height,
-      //     click: function (item: any) {
-      //       console.log(item);
-      //       win.setPosition(item.x, item.y, true);
-      //       win.setSize(item.w, item.h, true);
-      //       console.log(item.x, item.y, item.w, item.h);
-      //     }
-      //   });
-      // }
-      // data_append.submenu = submenu;
+      const submenu: Electron.MenuItemConstructorOptions[] = [];
+      for (const sc of screens) {
+        submenu.push({
+          label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
+          type: 'radio',
+          // x: sc.workArea.x,
+          // y: sc.workArea.y,
+          // w: sc.workArea.width,
+          // h: sc.workArea.height,
+          click: function (item: any) {
+            console.log(item);
+            win.setPosition(item.x, item.y, true);
+            win.setSize(item.w, item.h, true);
+            console.log(item.x, item.y, item.w, item.h);
+          }
+        });
+      }
+      data_append.submenu = submenu;
       // const cMenu = contextMenu(win);
       const cMenu = Menu.buildFromTemplate([
         {
