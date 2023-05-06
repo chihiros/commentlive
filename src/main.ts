@@ -1,8 +1,5 @@
-import { app, BrowserWindow, screen, Menu, MenuItem, Tray, shell, clipboard } from "electron";
-import * as path from "path";
+import { app, BrowserWindow, screen, Menu, Tray, shell, clipboard } from "electron";
 import { HOSTNAME, APP_NAME, GetScreenSize, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
-import { generateName } from "./utils";
-import { contextMenu } from "./menu";
 import { createPrompt, PromptResponse } from "./prompt";
 
 const is_windows = process.platform === 'win32'
