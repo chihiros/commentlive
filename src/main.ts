@@ -51,10 +51,6 @@ app.whenReady().then(() => {
       console.log("handlePrompt - then");
       console.log(e);
 
-      let tray: Tray;
-      if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
-      else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
-
       // const screens = screen.getAllDisplays();
 
       // let data_append: Electron.MenuItemConstructorOptions;
@@ -146,6 +142,10 @@ app.whenReady().then(() => {
         { label: 'Quit Commentable-Viewer', role: 'quit' },
       ]);
       // cMenu.insert(3, new MenuItem(data_append));
+
+      let tray: Tray;
+      if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
+      else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
       tray.setToolTip('commentable-viewer')
 
