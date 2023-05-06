@@ -59,8 +59,9 @@ app.whenReady().then(() => {
 
       const screens = screen.getAllDisplays();
 
-      let data_append: Electron.MenuItemConstructorOptions;
-      data_append.label = '表示ディスプレイ選択';
+      const data_append: Electron.MenuItemConstructorOptions = {
+        label: '表示ディスプレイ選択',
+      };
 
       const submenu: Electron.MenuItemConstructorOptions[] = [];
       for (const sc of screens) {
