@@ -20,6 +20,7 @@ function createWindow() {
     height: 600,
     transparent: true,
   });
+  win.loadFile('index.html');
 }
 
 app.setName(APP_NAME);
@@ -47,7 +48,6 @@ app.whenReady().then(() => {
       createWindow();
       win.setAlwaysOnTop(true, "screen-saver")
       win.setIgnoreMouseEvents(true);
-      win.loadFile('index.html')
       console.log("handlePrompt - then");
       console.log(e);
     })
