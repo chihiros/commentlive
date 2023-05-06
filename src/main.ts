@@ -101,7 +101,9 @@ app.whenReady().then(() => {
     win.show();
     // QRコードの表示
     win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${GetRoomName()}");`, true)
-      // .then(result => { })
+      .then(result => {
+        console.log(result);
+      })
       .catch(console.error);
 
   });
