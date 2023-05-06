@@ -5,10 +5,9 @@ import { createPrompt, PromptResponse } from "./prompt";
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
 // const is_linux = process.platform === 'linux'
-let win: BrowserWindow;
 
-function createWindow() {
-  win = new BrowserWindow({
+function createWindow(): BrowserWindow {
+  const win = new BrowserWindow({
     title: "CommentLive",
     // width: SCREEN_WIDTH,
     // height: SCREEN_HEIGHT,
@@ -27,6 +26,8 @@ function createWindow() {
       })
       .catch(console.error);
   });
+
+  return win;
 }
 
 app.setName(APP_NAME);
@@ -51,7 +52,8 @@ app.whenReady().then(() => {
       }
       SetServerUrl(e.serverUrl);
       SetRoomName(e.roomName);
-      createWindow();
+      const win = createWindow();
+
       win.setAlwaysOnTop(true, "screen-saver")
       win.setIgnoreMouseEvents(true);
       console.log("handlePrompt - then");
@@ -148,7 +150,7 @@ app.whenReady().then(() => {
         },
         { label: 'Quit Commentable-Viewer', role: 'quit' },
       ]);
-      // cMenu.insert(3, new MenuItem(data_append));
+      cMenu.insert(3, new MenuItem(data_append));
 
       let tray: Tray;
       if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
