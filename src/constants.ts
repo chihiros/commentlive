@@ -1,5 +1,8 @@
 import { screen } from "electron";
 
+// Appの名前を定義
+export const APP_NAME = "CommentLive";
+
 // WebSocketサーバのホスト名を定義
 const HOSTNAME = "http://localhost:8080";
 // const HOSTNAME = proccess.env.HOSTNAME;

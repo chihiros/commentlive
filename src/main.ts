@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, Tray } from "electron";
 import * as prompt from 'electron-prompt';
 import * as path from "path";
-import { GetScreenSize, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
+import { APP_NAME, GetScreenSize, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
 import { generateName } from "./utils";
 import { contextMenu } from "./menu";
 import { createPrompt, PromptResponse } from "./prompt";
@@ -22,6 +22,7 @@ function createWindow() {
   });
 }
 
+app.setName(APP_NAME);
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([
     {
