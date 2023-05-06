@@ -17,6 +17,16 @@ function createWindow() {
     transparent: true,
   });
   win.loadFile('index.html');
+
+  win.webContents.on('did-finish-load', () => {
+    win.show();
+    // QRコードの表示
+    win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${GetRoomName()}");`, true)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(console.error);
+  });
 }
 
 app.setName(APP_NAME);
@@ -159,17 +169,6 @@ app.whenReady().then(() => {
         .catch(console.error);
     })
     .catch(console.error);
-
-  win.webContents.on('did-finish-load', () => {
-    win.show();
-    // QRコードの表示
-    win.webContents.executeJavaScript(`toggleQR(true, "top_right", "${GetRoomName()}");`, true)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(console.error);
-
-  });
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
