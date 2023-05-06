@@ -55,7 +55,6 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
-    "electron-prompt": "^1.7.0",
     "p5": "^1.6.0",
     "qr-code-styling": "^1.6.0-rc.1",
     "ws": "^8.13.0"

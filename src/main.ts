@@ -1,5 +1,4 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, Tray, shell, clipboard } from "electron";
-import * as prompt from 'electron-prompt';
 import * as path from "path";
 import { HOSTNAME, APP_NAME, GetScreenSize, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
 import { generateName } from "./utils";
