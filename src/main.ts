@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen, Menu, MenuItem, Tray, shell, clipboard } from "electron";
 import { HOSTNAME, APP_NAME, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
 import { createPrompt, PromptResponse } from "./prompt";
+import { contextMenu } from "./menu";
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
@@ -83,73 +84,7 @@ app.whenReady().then(() => {
         });
       }
       data_append.submenu = submenu;
-      // const cMenu = contextMenu(win);
-      const cMenu = Menu.buildFromTemplate([
-        {
-          label: "投稿ページを開く", click: async () => {
-            await shell.openExternal(HOSTNAME + '/?room=' + GetRoomName());
-          }
-        },
-        {
-          label: '投稿ページURLをコピー',
-          click() {
-            clipboard.writeText(HOSTNAME + '/?room=' + GetRoomName());
-            console.log(HOSTNAME + '/?room=' + encodeURI(GetRoomName()));
-          }
-        },
-        {
-          type: 'separator',
-        },
-        {
-          label: "QR Code表示",
-          submenu: [
-            {
-              label: '非表示', type: 'radio',
-              click(item, focusedWindow) {
-                console.log(item, focusedWindow);
-                win.webContents.executeJavaScript(`toggleQR(${item.checked}, "none", "${GetRoomName()}");`, true)
-                  .catch(console.error);
-              }
-            },
-            {
-              label: 'QR Code [CENTER]', type: 'radio',
-              click(item, focusedWindow) {
-                console.log(item, focusedWindow);
-                win.webContents.executeJavaScript(`toggleQR(${item.checked}, "center", "${GetRoomName()}");`, true)
-                  .catch(console.error);
-              }
-            },
-            {
-              label: 'QR Code [TOP RIGHT]', type: 'radio', checked: true,
-              click(item, focusedWindow) {
-                console.log(item, focusedWindow);
-                win.webContents.executeJavaScript(`toggleQR(${item.checked}, "top_right", "${GetRoomName()}");`, true)
-                  .catch(console.error);
-              }
-            },
-          ]
-        },
-
-        {
-          label: '投稿制限解除', type: 'checkbox',
-          click(item) {
-            win.webContents.executeJavaScript(`toggleCommentControl(${item.checked});`, true)
-              .catch(console.error);
-          }
-        },
-
-        {
-          label: 'Mute sound', type: 'checkbox',
-          click() {
-            win.webContents.executeJavaScript(`toggleSoundMute();`, true)
-              .catch(console.error);
-          }
-        },
-        {
-          type: 'separator',
-        },
-        { label: 'Quit Commentable-Viewer', role: 'quit' },
-      ]);
+      const cMenu = contextMenu(win);
       cMenu.insert(3, new MenuItem(data_append));
 
       let tray: Tray;

@@ -4,8 +4,7 @@ import { HOSTNAME } from "./constants";
 const g_room = "test";
 
 // export const contextMenu = Menu.buildFromTemplate([
-export function contextMenu(): Menu {
-  const win = new BrowserWindow();
+export function contextMenu(win: BrowserWindow): Menu {
   return Menu.buildFromTemplate([
     {
       label: "投稿ページを開く", click: async () => {
