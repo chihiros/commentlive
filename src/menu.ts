@@ -10,11 +10,11 @@ export function contextMenu(win: BrowserWindow): Menu {
     submenu.push({
       label: `${sc.label} [${sc.bounds.width}x${sc.bounds.height}]`,
       type: 'radio',
-      click: function (item: any) {
-        console.log("item", item);
-        win.setPosition(item.x, item.y, true);
-        win.setSize(item.w, item.h, true);
-        console.log(item.x, item.y, item.w, item.h);
+      click: function () {
+        win.setPosition(sc.bounds.x, sc.bounds.y, true);
+        win.setSize(sc.bounds.width, sc.bounds.height, true);
+        console.log(sc.bounds.x, sc.bounds.y, sc.bounds.width, sc.bounds.height);
+
       }
     });
   }
