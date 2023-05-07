@@ -1,5 +1,5 @@
-import { app, BrowserWindow, screen, Menu, MenuItem, Tray, shell, clipboard } from "electron";
-import { HOSTNAME, APP_NAME, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
+import { app, BrowserWindow, Menu, Tray } from "electron";
+import { APP_NAME, SetServerUrl, SetRoomName, GetRoomName } from "./constants";
 import { createPrompt, PromptResponse } from "./prompt";
 import { contextMenu } from "./menu";
 
