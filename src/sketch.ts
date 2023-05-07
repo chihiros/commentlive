@@ -118,6 +118,7 @@ function newComment(data: any) {
   }
 
   let isUpdate = false;
+  let id = 0;
   // ライフがゼロになっている変数を探す（一番古い変数を探す）
   for (let i = 0; i < max_number_of_comment; i++) {
     if (comments[i].getLife() == 0) {
