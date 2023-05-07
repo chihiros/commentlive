@@ -58,14 +58,6 @@ export function contextMenu(win: BrowserWindow): Menu {
           .catch(console.error);
       }
     },
-
-    {
-      label: 'Mute sound', type: 'checkbox',
-      click() {
-        win.webContents.executeJavaScript(`toggleSoundMute();`, true)
-          .catch(console.error);
-      }
-    },
     {
       type: 'separator',
     },
