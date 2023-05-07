@@ -78,4 +78,6 @@ export function contextMenu(win: BrowserWindow): Menu {
     },
     { label: 'Quit Commentable-Viewer', role: 'quit' },
   ]);
+
+  return menu;
 }
