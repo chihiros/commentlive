@@ -73,9 +73,9 @@ function startSocketConnection(room) {
 }
 
 // 起動時、一番最初に呼ばれる関数
-function setup() {
+function setup(p: p5) {
   textFont("Noto Sans JP");
-  mycanvas = createCanvas(windowWidth, windowHeight);
+  mycanvas = p.createCanvas(windowWidth, windowHeight);
   console.log(windowWidth, windowHeight);
   document.getElementById("canvas_placeholder").append(mycanvas.elt);
 
