@@ -1,9 +1,9 @@
 import { WebSocket } from "ws"
 import { Comment } from "./comment"
-import * as p5 from "p5"
+import p5 from "p5"
 import { screen } from "electron";
 import { getRandom } from "./utils";
-import { HOSTNAME } from "./constants";
+import { HOSTNAME, GetScreenSize } from "./constants";
 
 let peerConnection: RTCPeerConnection;
 
