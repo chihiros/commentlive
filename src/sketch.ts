@@ -15,8 +15,7 @@ const FRAME_RATE = 60;
 const EMOJI_SEC = 2.0;
 const TEXT_SEC = 6.0;
 
-let mycanvas;
-let max_number_of_comment = 100; // Maxの描画できるコメント数
+const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
 let comments = []; //new Array(50);
 function whileLoading(total) {
