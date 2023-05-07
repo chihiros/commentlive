@@ -140,8 +140,6 @@ function newComment(data: any) {
     p.textSize(text_size);
 
     comments[id].setIdImg(data.id_img);
-    comments[id].setFlgSound(data.flg_sound);
-    comments[id].setIdSound(data.id_sound);
     comments[id].setFlgEmoji(data.flg_emoji);
     // comments[id].setAlpha(255.0); // 1.0: 不透明, 0.0: 透明
 
