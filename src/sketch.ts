@@ -5,8 +5,6 @@ import { screen } from "electron";
 import { getRandom } from "./utils";
 import { HOSTNAME } from "./constants";
 
-let socket: WebSocket;
-
 let peerConnection: RTCPeerConnection;
 
 let color_text: string;
