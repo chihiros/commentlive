@@ -179,16 +179,3 @@ function newComment(data) {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
-function toggleSoundMute() {
-  flg_sound_mute = !flg_sound_mute;
-}
-
-
-function toggleCommentControl(checked) {
-  let data = {
-    key: 'dummy',
-    control: checked
-  }
-  socket.emit('deactivate_comment_control', data);
-}
