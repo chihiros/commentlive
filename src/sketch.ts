@@ -12,6 +12,57 @@ let color_text_stroke: string;
 const FRAME_RATE = 60;
 const EMOJI_SEC = 2.0;
 const TEXT_SEC = 6.0;
+const { SCREEN_WIDTH, SCREEN_HEIGHT } = GetScreenSize();
+
+const sketch = (p: p5) => {
+  // setup関数より前に呼ばれる関数
+  p.preload = () => {
+    for (let i = 0; i < max_number_of_comment; i++) {
+      comments[i] = new Comment();
+      comments[i].setLife(0);
+    }
+  }
+
+  // 起動時、一番最初に呼ばれる関数
+  p.setup = () => {
+    p.textFont("Noto Sans JP");
+    const mycanvas = p.createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+    console.log(SCREEN_WIDTH, SCREEN_HEIGHT);
+    document.getElementById("canvas_placeholder").append(mycanvas.elt);
+
+    p.frameRate(FRAME_RATE);
+    // const params = getURLParams();
+    // if (params.name) { }
+
+    // p.textAlign(CENTER, CENTER);
+  }
+
+  // 毎フレームごとに呼ばれる関数
+  p.draw = () => {
+    // clear();
+    p.background(0, 0, 0, 0);
+
+    for (let i = 0; i < max_number_of_comment; i++) {
+      let frames = 0;
+      if (comments[i].getFlgEmoji()) {
+        frames = EMOJI_SEC * FRAME_RATE;
+      } else {
+        frames = TEXT_SEC * FRAME_RATE;
+      }
+
+      if (comments[i].getLife() > 0) {
+        comments[i].update(frames);
+        comments[i].draw();
+      }
+    }
+  }
+
+  p.windowResized = () => {
+    p.resizeCanvas(width, height);
+  }
+}
+
+const p = new p5(sketch);
 
 const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
@@ -21,15 +72,6 @@ const max_number_of_comment = 100; // Maxの描画できるコメント数
 
 // let comments = []; //new Array(50);
 const comments: Comment[] = [];
-
-
-// setup関数より前に呼ばれる関数
-function preload() {
-  for (let i = 0; i < max_number_of_comment; i++) {
-    comments[i] = new Comment();
-    comments[i].setLife(0);
-  }
-}
 
 function startSocketConnection(room: string) {
   const socket = new WebSocket(HOSTNAME);
@@ -70,43 +112,6 @@ function startSocketConnection(room: string) {
   window.onunload = window.onbeforeunload = () => {
     socket.close();
   };
-}
-
-// 起動時、一番最初に呼ばれる関数
-function setup(p: p5) {
-  textFont("Noto Sans JP");
-  mycanvas = p.createCanvas(windowWidth, windowHeight);
-  console.log(windowWidth, windowHeight);
-  document.getElementById("canvas_placeholder").append(mycanvas.elt);
-
-  frameRate(FRAME_RATE); // フレームレートを30fpsに設定してあるみたい
-  let params = getURLParams();
-  if (params.name) {
-
-  }
-
-  textAlign(CENTER, CENTER);
-  flg_sound_mute = false;
-}
-
-// 毎フレームごとに呼ばれる関数
-function draw(p: p5) {
-  // clear();
-  p.background(0, 0, 0, 0);
-
-  for (let i = 0; i < max_number_of_comment; i++) {
-    let frames = 0;
-    if (comments[i].getFlgEmoji()) {
-      frames = EMOJI_SEC * FRAME_RATE;
-    } else {
-      frames = TEXT_SEC * FRAME_RATE;
-    }
-
-    if (comments[i].getLife() > 0) {
-      comments[i].update(frames);
-      comments[i].draw();
-    }
-  }
 }
 
 // newComment function でコメントを画面に描画する処理をしている
@@ -173,8 +178,4 @@ function newComment(data: any) {
       comments[id].setY(Math.random() * height - text_size);
     }
   }
-}
-
-function windowResized(p: p5) {
-  p.resizeCanvas(width, height);
 }
