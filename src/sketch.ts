@@ -34,8 +34,7 @@ function preload() {
   }
 }
 
-function startSocketConnection(room) {
-  socket = io.connect(hostname);
+function startSocketConnection(room: string) {
   socket.on('you_are_connected', function () {
     // 部屋名を指定してジョインする．
     socket.emit('join', room);
