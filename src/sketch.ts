@@ -176,6 +176,6 @@ function newComment(data: any) {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+function windowResized(p: p5) {
+  p.resizeCanvas(width, height);
 }
