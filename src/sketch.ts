@@ -18,9 +18,6 @@ const TEXT_SEC = 6.0;
 let mycanvas;
 let max_number_of_comment = 100; // Maxの描画できるコメント数
 
-// const hostname = "https://commentable.fly.dev";
-const hostname = "http://localhost:8080";
-
 let comments = []; //new Array(50);
 function whileLoading(total) {
   console.log('loaded: ', + total);
