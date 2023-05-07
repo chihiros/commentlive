@@ -1,7 +1,5 @@
 import { BrowserWindow, Menu, shell, clipboard, screen } from 'electron';
-import { HOSTNAME } from "./constants";
-
-const g_room = "test";
+import { HOSTNAME, GetRoomName } from "./constants";
 
 export function contextMenu(win: BrowserWindow): Menu {
   const screens = screen.getAllDisplays();
@@ -25,14 +23,14 @@ export function contextMenu(win: BrowserWindow): Menu {
     {
       label: "投稿ページを開く",
       click: async () => {
-        await shell.openExternal(HOSTNAME + '/?room=' + g_room);
+        await shell.openExternal(HOSTNAME + '/?room=' + GetRoomName());
       }
     },
     {
       label: '投稿ページURLをコピー',
       click() {
-        clipboard.writeText(HOSTNAME + '/?room=' + g_room);
-        console.log(HOSTNAME + '/?room=' + encodeURI(g_room));
+        clipboard.writeText(HOSTNAME + '/?room=' + GetRoomName());
+        console.log(HOSTNAME + '/?room=' + encodeURI(GetRoomName()));
       }
     },
     {
@@ -49,7 +47,7 @@ export function contextMenu(win: BrowserWindow): Menu {
           label: '非表示', type: 'radio',
           click(item, focusedWindow) {
             console.log(item, focusedWindow);
-            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "none", "${g_room}");`, true)
+            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "none", "${GetRoomName()}");`, true)
               .catch(console.error);
           }
         },
@@ -57,7 +55,7 @@ export function contextMenu(win: BrowserWindow): Menu {
           label: 'QR Code [CENTER]', type: 'radio',
           click(item, focusedWindow) {
             console.log(item, focusedWindow);
-            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "center", "${g_room}");`, true)
+            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "center", "${GetRoomName()}");`, true)
               .catch(console.error);
           }
         },
@@ -65,7 +63,7 @@ export function contextMenu(win: BrowserWindow): Menu {
           label: 'QR Code [TOP RIGHT]', type: 'radio', checked: true,
           click(item, focusedWindow) {
             console.log(item, focusedWindow);
-            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "top_right", "${g_room}");`, true)
+            win.webContents.executeJavaScript(`toggleQR(${item.checked}, "top_right", "${GetRoomName()}");`, true)
               .catch(console.error);
           }
         },
