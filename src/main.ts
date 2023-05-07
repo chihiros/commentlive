@@ -60,32 +60,7 @@ app.whenReady().then(() => {
       console.log("handlePrompt - then");
       console.log(e);
 
-      const screens = screen.getAllDisplays();
-
-      const data_append: Electron.MenuItemConstructorOptions = {
-        label: '表示ディスプレイ選択',
-      };
-
-      const submenu: Electron.MenuItemConstructorOptions[] = [];
-      for (const sc of screens) {
-        submenu.push({
-          label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
-          type: 'radio',
-          // x: sc.workArea.x,
-          // y: sc.workArea.y,
-          // w: sc.workArea.width,
-          // h: sc.workArea.height,
-          click: function (item: any) {
-            console.log(item);
-            win.setPosition(item.x, item.y, true);
-            win.setSize(item.w, item.h, true);
-            console.log(item.x, item.y, item.w, item.h);
-          }
-        });
-      }
-      data_append.submenu = submenu;
       const cMenu = contextMenu(win);
-      cMenu.insert(3, new MenuItem(data_append));
 
       let tray: Tray;
       if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);

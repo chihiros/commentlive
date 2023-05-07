@@ -5,7 +5,25 @@ const g_room = "test";
 
 // export const contextMenu = Menu.buildFromTemplate([
 export function contextMenu(win: BrowserWindow): Menu {
-  return Menu.buildFromTemplate([
+  const screens = screen.getAllDisplays();
+  console.log("screens", screens);
+
+  const submenu: Electron.MenuItemConstructorOptions[] = [];
+  for (const sc of screens) {
+    submenu.push({
+      // label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
+      label: `${sc.label} [${sc.bounds.width}x${sc.bounds.height}]`,
+      type: 'radio',
+      click: function (item: any) {
+        console.log("item", item);
+        win.setPosition(item.x, item.y, true);
+        win.setSize(item.w, item.h, true);
+        console.log(item.x, item.y, item.w, item.h);
+      }
+    });
+  }
+
+  const menu = Menu.buildFromTemplate([
     {
       label: "投稿ページを開く",
       click: async () => {
