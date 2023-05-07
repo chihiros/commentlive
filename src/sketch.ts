@@ -14,6 +14,20 @@ const EMOJI_SEC = 2.0;
 const TEXT_SEC = 6.0;
 const { SCREEN_WIDTH, SCREEN_HEIGHT } = GetScreenSize();
 
+// WebSocketで送信されてくるDataの形式
+type Data = {
+  key: string;
+  my_name: string;
+  comment: string;
+  color_text: string;
+  color_text_stroke: string;
+  flg_emoji: boolean;
+  flg_image: boolean;
+  id_image: number;
+  flg_sound: boolean;
+  id_sound: string;
+}
+
 const sketch = (p: p5) => {
   // setup関数より前に呼ばれる関数
   p.preload = () => {
@@ -115,9 +129,7 @@ function startSocketConnection(room: string) {
 }
 
 // newComment function でコメントを画面に描画する処理をしている
-function newComment(data: any) {
-  const p = new p5();
-
+function newComment(data: Data) {
   // 送られてきたコメントが空の場合は処理を終了する
   if (data.comment.length <= 0) {
     return;
