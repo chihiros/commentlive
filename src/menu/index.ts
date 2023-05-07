@@ -14,7 +14,6 @@ export function contextMenu(win: BrowserWindow): Menu {
         win.setPosition(sc.bounds.x, sc.bounds.y, true);
         win.setSize(sc.bounds.width, sc.bounds.height, true);
         console.log(sc.bounds.x, sc.bounds.y, sc.bounds.width, sc.bounds.height);
-
       }
     });
   }
