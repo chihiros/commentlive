@@ -15,14 +15,18 @@ const TEXT_SEC = 6.0;
 
 const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
-let comments = []; //new Array(50);
-function whileLoading(total) {
+// let comments = []; //new Array(50);
+let mycanvas: HTMLCanvasElement;
+const max_number_of_comment = 100; // Maxの描画できるコメント数
+
+// let comments = []; //new Array(50);
+const comments: Comment[] = [];
+
   console.log('loaded: ', + total);
 }
 
 // setup関数より前に呼ばれる関数
 function preload() {
-  let count_loaded = 0;
   for (let i = 0; i < max_number_of_comment; i++) {
     comments[i] = new Comment();
     comments[i].setLife(0);
