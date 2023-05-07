@@ -39,24 +39,26 @@ function startSocketConnection(room) {
 
   socket.on('comment', newComment);
   socket.on('disconnect', () => {
-    log('you have been disconnected');
+    console.log('you have been disconnected');
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
   socket.on('user joined', (data) => {
-    log(data.username + ' joined');
+    console.log(data.username + ' joined');
   });
   // Whenever the server emits 'user left', log it in the chat body
   socket.on('user left', (data) => {
-    log(data.username + ' left');
+    console.log(data.username + ' left');
   });
   socket.on('reconnect', () => {
-    log('you have been reconnected');
+    console.log('you have been reconnected');
     socket.emit('join', room);
   });
   socket.on('login', (data) => {
+    console.log(data);
   });
   socket.on('deactivate_comment_control', (data) => {
+    console.log(data);
   });
 
   socket.on("disconnectPeer", () => {
