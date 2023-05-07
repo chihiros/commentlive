@@ -35,6 +35,8 @@ function preload() {
 }
 
 function startSocketConnection(room: string) {
+  const socket = new WebSocket(HOSTNAME);
+
   socket.on('you_are_connected', function () {
     // 部屋名を指定してジョインする．
     socket.emit('join', room);
