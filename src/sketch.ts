@@ -22,6 +22,7 @@ const max_number_of_comment = 100; // Maxの描画できるコメント数
 // let comments = []; //new Array(50);
 const comments: Comment[] = [];
 
+function whileLoading(total: number) {
   console.log('loaded: ', + total);
 }
 
