@@ -1,5 +1,5 @@
 import { BrowserWindow, Menu, shell, clipboard, screen } from 'electron';
-import { HOSTNAME, GetRoomName } from "./constants";
+import { HOSTNAME, GetRoomName } from "../constants";
 
 export function contextMenu(win: BrowserWindow): Menu {
   const screens = screen.getAllDisplays();
