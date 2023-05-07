@@ -184,10 +184,6 @@ function toggleSoundMute() {
   flg_sound_mute = !flg_sound_mute;
 }
 
-function readyLoading(count_loaded) {
-  console.log(count_loaded);
-  document.getElementById('p5_loading').innerHTML = str(count_loaded) + ' files loaded.';
-}
 
 function toggleCommentControl(checked) {
   let data = {
