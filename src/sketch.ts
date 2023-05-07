@@ -110,8 +110,9 @@ function draw(p: p5) {
 }
 
 // newComment function でコメントを画面に描画する処理をしている
-let count_comment = 0;
-function newComment(data) {
+function newComment(data: any) {
+  const p = new p5();
+
   // 送られてきたコメントが空の場合は処理を終了する
   if (data.comment.length <= 0) {
     return;
@@ -136,7 +137,7 @@ function newComment(data) {
     comments[id].setColor(data.color_text, data.color_text_stroke);
     // テキストサイズを設定
     const text_size = height / 20;
-    textSize(text_size);
+    p.textSize(text_size);
 
     comments[id].setIdImg(data.id_img);
     comments[id].setFlgSound(data.flg_sound);
@@ -145,7 +146,7 @@ function newComment(data) {
     // comments[id].setAlpha(255.0); // 1.0: 不透明, 0.0: 透明
 
     // X座標を設定
-    comments[id].setTextWidth(textWidth(data.comment));
+    comments[id].setTextWidth(p.textWidth(data.comment));
     const text_width = comments[id].getTextWidth();
     if (text_width < width) {
       comments[id].setX(random(text_width / 2, width - text_width / 2));
