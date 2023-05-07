@@ -3,7 +3,6 @@ import { HOSTNAME } from "./constants";
 
 const g_room = "test";
 
-// export const contextMenu = Menu.buildFromTemplate([
 export function contextMenu(win: BrowserWindow): Menu {
   const screens = screen.getAllDisplays();
   console.log("screens", screens);
