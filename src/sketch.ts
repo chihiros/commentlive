@@ -90,9 +90,9 @@ function setup(p: p5) {
 }
 
 // 毎フレームごとに呼ばれる関数
-function draw() {
-  clear();
-  background(0, 0, 0, 0);
+function draw(p: p5) {
+  // clear();
+  p.background(0, 0, 0, 0);
 
   for (let i = 0; i < max_number_of_comment; i++) {
     let frames = 0;
@@ -104,7 +104,7 @@ function draw() {
 
     if (comments[i].getLife() > 0) {
       comments[i].update(frames);
-      comments[i].draw(frames);
+      comments[i].draw();
     }
   }
 }
