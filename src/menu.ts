@@ -50,14 +50,6 @@ export function contextMenu(win: BrowserWindow): Menu {
         },
       ]
     },
-
-    {
-      label: '投稿制限解除', type: 'checkbox',
-      click(item) {
-        win.webContents.executeJavaScript(`toggleCommentControl(${item.checked});`, true)
-          .catch(console.error);
-      }
-    },
     {
       type: 'separator',
     },
