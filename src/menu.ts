@@ -41,6 +41,10 @@ export function contextMenu(win: BrowserWindow): Menu {
       type: 'separator',
     },
     {
+      label: '表示ディスプレイ選択',
+      submenu: submenu,
+    },
+    {
       label: "QR Code表示",
       submenu: [
         {
