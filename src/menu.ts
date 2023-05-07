@@ -11,7 +11,6 @@ export function contextMenu(win: BrowserWindow): Menu {
   const submenu: Electron.MenuItemConstructorOptions[] = [];
   for (const sc of screens) {
     submenu.push({
-      // label: `Display-${sc.id} [${sc.bounds.x}, ${sc.bounds.y}] ${sc.bounds.width}x${sc.bounds.height}`,
       label: `${sc.label} [${sc.bounds.width}x${sc.bounds.height}]`,
       type: 'radio',
       click: function (item: any) {
