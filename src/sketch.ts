@@ -149,7 +149,7 @@ function newComment(data: any) {
     comments[id].setTextWidth(p.textWidth(data.comment));
     const text_width = comments[id].getTextWidth();
     if (text_width < width) {
-      comments[id].setX(random(text_width / 2, width - text_width / 2));
+      comments[id].setX(getRandom(text_width / 2, width - text_width / 2));
     }
     else {
       comments[id].setX(text_width / 2);
@@ -164,19 +164,14 @@ function newComment(data: any) {
       const max_height = height - (text_size / 2);
       const min_height = height - (height / 10);
       // px単位で指定する
-      comments[id].setY(random(min_height, max_height));
+      // comments[id].setY(Math.random(min_height, max_height));
+      comments[id].setY(getRandom(min_height, max_height));
     } else {
       // テキストの場合の処理
       // 描画時間: 3000ms
       comments[id].setLife(TEXT_SEC * FRAME_RATE);
       comments[id].setX(width + text_width / 2);
-      comments[id].setY(random(height - text_size));
-    }
-
-    // サウンドを再生する
-    if (data.flg_sound == true && flg_sound_mute == false) {
-      comments[id].setVolume(volume);
-      comments[id].playSound();
+      comments[id].setY(Math.random() * height - text_size);
     }
   }
 }
