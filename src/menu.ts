@@ -1,4 +1,4 @@
-import { BrowserWindow, Menu, shell, clipboard } from 'electron';
+import { BrowserWindow, Menu, shell, clipboard, screen } from 'electron';
 import { HOSTNAME } from "./constants";
 
 const g_room = "test";
