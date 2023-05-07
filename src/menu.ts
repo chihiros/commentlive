@@ -7,7 +7,8 @@ const g_room = "test";
 export function contextMenu(win: BrowserWindow): Menu {
   return Menu.buildFromTemplate([
     {
-      label: "投稿ページを開く", click: async () => {
+      label: "投稿ページを開く",
+      click: async () => {
         await shell.openExternal(HOSTNAME + '/?room=' + g_room);
       }
     },
