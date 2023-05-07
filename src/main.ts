@@ -66,7 +66,7 @@ app.whenReady().then(() => {
       if (is_windows) tray = new Tray(`${__dirname}/images/icon.ico`);
       else if (is_mac) tray = new Tray(`${__dirname}/images/icon.png`);
 
-      tray.setToolTip('commentable-viewer')
+      tray.setToolTip('commentlive-viewer')
 
       tray.setContextMenu(cMenu)
       //クリック時の操作を設定
