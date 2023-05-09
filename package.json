@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/electron-prompt": "^1.6.1",
-    "@types/p5": "^1.6.1",
+    "@types/p5": "^1.6.2",
     "@types/ws": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
